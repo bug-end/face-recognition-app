@@ -16,7 +16,7 @@ function App() {
         <ImageLinkForm />
         {/* <FaceRecognition /> */}
       </div>
-      <ParticlesBg type="cobweb" bg={true} />
+      <ParticlesBg type="cobweb" bg={true} num={35} />
     </>
   );
 }
