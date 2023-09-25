@@ -1,18 +1,64 @@
 import "./App.css";
 import Logo from "./components/Logo/Logo";
 import Navigation from "./components/Navigation/Navigation";
+import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import Rank from "./components/Rank/Rank";
-
 import ParticlesBg from "particles-bg";
+import { useState } from "react";
 
 function App() {
+  const [imageUrlResponse, setImageUrlResponse] = useState("");
+  const [input, setInput] = useState("");
+
+  const PAT = "d0e629f380a14f6babfa9cc843c8e989";
+  const USER_ID = "bielecki";
+  const APP_ID = "face-recognition-app";
+  const MODEL_ID = "face-detection";
+
+  const returnClarifaiRequestOptions = (imageUrl) => {
+    const IMAGE_URL = imageUrl;
+
+    const raw = JSON.stringify({
+      user_app_id: {
+        user_id: USER_ID,
+        app_id: APP_ID,
+      },
+      inputs: [
+        {
+          data: {
+            image: {
+              url: IMAGE_URL,
+            },
+          },
+        },
+      ],
+    });
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: "Key " + PAT,
+      },
+      body: raw,
+    };
+
+    return requestOptions;
+  };
+
   const handleInputchange = (event) => {
-    console.log(event.target.value);
+    setInput(event.target.value);
   };
 
   const handleonButtonSubmit = () => {
-    console.log("click");
+    setImageUrlResponse(input);
+    console.log(input);
+    fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/outputs", returnClarifaiRequestOptions(input))
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.outputs[0].data);
+      });
   };
 
   return (
@@ -22,7 +68,7 @@ function App() {
         <Logo />
         <Rank />
         <ImageLinkForm onInputChange={handleInputchange} onButtonSubmit={handleonButtonSubmit} />
-        {/* <FaceRecognition /> */}
+        <FaceRecognition imageUrl={imageUrlResponse} />
         <ParticlesBg type="cobweb" bg={true} num={35} />
       </div>
     </>
