@@ -10,6 +10,7 @@ import { useState } from "react";
 function App() {
   const [imageUrlResponse, setImageUrlResponse] = useState("");
   const [input, setInput] = useState("");
+  const [box, setBox] = useState([]);
 
   const PAT = "d0e629f380a14f6babfa9cc843c8e989";
   const USER_ID = "bielecki";
@@ -47,18 +48,43 @@ function App() {
     return requestOptions;
   };
 
+  const calculateFaceLocation = (data) => {
+    const clarifaiBoundingBoxes = data.outputs[0].data.regions.map((region) => {
+      return region.region_info.bounding_box;
+    });
+
+    const image = document.getElementById("inputimage");
+    const width = Number(image.width);
+    const height = Number(image.height);
+    let boundingBoxes = [];
+
+    clarifaiBoundingBoxes.forEach((boundingBox) => {
+      boundingBoxes.push({
+        leftCol: boundingBox.left_col * width,
+        topRow: boundingBox.top_row * height,
+        rightCol: width - boundingBox.right_col * width,
+        bottomRow: height - boundingBox.bottom_row * height,
+      });
+    });
+    return boundingBoxes;
+  };
+
+  const displayFace = (boundingBox) => {
+    setBox(boundingBox);
+  };
+
   const handleInputchange = (event) => {
     setInput(event.target.value);
   };
 
   const handleonButtonSubmit = () => {
     setImageUrlResponse(input);
-    console.log(input);
     fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/outputs", returnClarifaiRequestOptions(input))
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.outputs[0].data);
-      });
+        displayFace(calculateFaceLocation(data));
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -68,7 +94,7 @@ function App() {
         <Logo />
         <Rank />
         <ImageLinkForm onInputChange={handleInputchange} onButtonSubmit={handleonButtonSubmit} />
-        <FaceRecognition imageUrl={imageUrlResponse} />
+        <FaceRecognition boxes={box} imageUrl={imageUrlResponse} />
         <ParticlesBg type="cobweb" bg={true} num={35} />
       </div>
     </>
