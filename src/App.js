@@ -6,11 +6,13 @@ import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import Rank from "./components/Rank/Rank";
 import ParticlesBg from "particles-bg";
 import { useState } from "react";
+import Signin from "./components/Signin/Signin";
 
 function App() {
   const [imageUrlResponse, setImageUrlResponse] = useState("");
   const [input, setInput] = useState("");
   const [box, setBox] = useState([]);
+  const [route, setRoute] = useState("signin");
 
   const PAT = "d0e629f380a14f6babfa9cc843c8e989";
   const USER_ID = "bielecki";
@@ -87,17 +89,25 @@ function App() {
       .catch((err) => console.log(err));
   };
 
+  const handleOnRouteChange = (route) => {
+    setRoute(route);
+  };
+
   return (
-    <>
-      <div className="App">
-        <Navigation />
-        <Logo />
-        <Rank />
-        <ImageLinkForm onInputChange={handleInputchange} onButtonSubmit={handleonButtonSubmit} />
-        <FaceRecognition boxes={box} imageUrl={imageUrlResponse} />
-        <ParticlesBg type="cobweb" bg={true} num={35} />
-      </div>
-    </>
+    <div className="App">
+      <Navigation onRouteChange={handleOnRouteChange} />
+      {route === "signin" ? (
+        <Signin onRouteChange={handleOnRouteChange} />
+      ) : (
+        <div>
+          <Logo />
+          <Rank />
+          <ImageLinkForm onInputChange={handleInputchange} onButtonSubmit={handleonButtonSubmit} />
+          <FaceRecognition boxes={box} imageUrl={imageUrlResponse} />
+        </div>
+      )}
+      <ParticlesBg type="cobweb" bg={true} num={35} />
+    </div>
   );
 }
 
