@@ -1,23 +1,25 @@
-import "./App.css";
-import Logo from "./components/Logo/Logo";
-import Navigation from "./components/Navigation/Navigation";
-import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
-import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
-import Rank from "./components/Rank/Rank";
-import ParticlesBg from "particles-bg";
-import { useState } from "react";
-import Signin from "./components/Signin/Signin";
+import './App.css';
+import Logo from './components/Logo/Logo';
+import Navigation from './components/Navigation/Navigation';
+import FaceRecognition from './components/FaceRecognition/FaceRecognition';
+import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
+import Rank from './components/Rank/Rank';
+import ParticlesBg from 'particles-bg';
+import { useState } from 'react';
+import Signin from './components/Signin/Signin';
+import Register from './components/Register/Register';
 
 function App() {
-  const [imageUrlResponse, setImageUrlResponse] = useState("");
-  const [input, setInput] = useState("");
+  const [imageUrlResponse, setImageUrlResponse] = useState('');
+  const [input, setInput] = useState('');
   const [box, setBox] = useState([]);
-  const [route, setRoute] = useState("signin");
+  const [route, setRoute] = useState('signin');
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
-  const PAT = "d0e629f380a14f6babfa9cc843c8e989";
-  const USER_ID = "bielecki";
-  const APP_ID = "face-recognition-app";
-  const MODEL_ID = "face-detection";
+  const PAT = 'd0e629f380a14f6babfa9cc843c8e989';
+  const USER_ID = 'bielecki';
+  const APP_ID = 'face-recognition-app';
+  const MODEL_ID = 'face-detection';
 
   const returnClarifaiRequestOptions = (imageUrl) => {
     const IMAGE_URL = imageUrl;
@@ -39,10 +41,10 @@ function App() {
     });
 
     const requestOptions = {
-      method: "POST",
+      method: 'POST',
       headers: {
-        Accept: "application/json",
-        Authorization: "Key " + PAT,
+        Accept: 'application/json',
+        Authorization: 'Key ' + PAT,
       },
       body: raw,
     };
@@ -55,7 +57,7 @@ function App() {
       return region.region_info.bounding_box;
     });
 
-    const image = document.getElementById("inputimage");
+    const image = document.getElementById('inputimage');
     const width = Number(image.width);
     const height = Number(image.height);
     let boundingBoxes = [];
@@ -81,7 +83,7 @@ function App() {
 
   const handleonButtonSubmit = () => {
     setImageUrlResponse(input);
-    fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/outputs", returnClarifaiRequestOptions(input))
+    fetch('https://api.clarifai.com/v2/models/' + MODEL_ID + '/outputs', returnClarifaiRequestOptions(input))
       .then((response) => response.json())
       .then((data) => {
         displayFace(calculateFaceLocation(data));
@@ -90,23 +92,30 @@ function App() {
   };
 
   const handleOnRouteChange = (route) => {
+    if (route === 'signout') {
+      setIsSignedIn(false);
+    } else if (route === 'home') {
+      setIsSignedIn(true);
+    }
     setRoute(route);
   };
 
   return (
-    <div className="App">
-      <Navigation onRouteChange={handleOnRouteChange} />
-      {route === "signin" ? (
-        <Signin onRouteChange={handleOnRouteChange} />
-      ) : (
+    <div className='App'>
+      <Navigation isSignedIn={isSignedIn} onRouteChange={handleOnRouteChange} />
+      {route === 'home' ? (
         <div>
           <Logo />
           <Rank />
           <ImageLinkForm onInputChange={handleInputchange} onButtonSubmit={handleonButtonSubmit} />
           <FaceRecognition boxes={box} imageUrl={imageUrlResponse} />
         </div>
+      ) : route === 'signin' ? (
+        <Signin onRouteChange={handleOnRouteChange} />
+      ) : (
+        <Register onRouteChange={handleOnRouteChange} />
       )}
-      <ParticlesBg type="cobweb" bg={true} num={35} />
+      <ParticlesBg type='cobweb' bg={true} num={35} />
     </div>
   );
 }
