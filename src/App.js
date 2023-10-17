@@ -5,7 +5,7 @@ import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import ParticlesBg from 'particles-bg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
 
@@ -15,11 +15,34 @@ function App() {
   const [box, setBox] = useState([]);
   const [route, setRoute] = useState('signin');
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [user, setUser] = useState({
+    id: '',
+    name: '',
+    email: '',
+    entries: 0,
+    joined: '',
+  });
 
   const PAT = 'd0e629f380a14f6babfa9cc843c8e989';
   const USER_ID = 'bielecki';
   const APP_ID = 'face-recognition-app';
   const MODEL_ID = 'face-detection';
+
+  useEffect(() => {
+    fetch('http://localhost:3000/')
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }, []);
+
+  const handleLoadUser = (data) => {
+    setUser({
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      entries: data.entries,
+      joined: data.joined,
+    });
+  };
 
   const returnClarifaiRequestOptions = (imageUrl) => {
     const IMAGE_URL = imageUrl;
@@ -113,7 +136,7 @@ function App() {
       ) : route === 'signin' ? (
         <Signin onRouteChange={handleOnRouteChange} />
       ) : (
-        <Register onRouteChange={handleOnRouteChange} />
+        <Register loadUser={handleLoadUser} onRouteChange={handleOnRouteChange} />
       )}
       <ParticlesBg type='cobweb' bg={true} num={35} />
     </div>
