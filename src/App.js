@@ -104,11 +104,27 @@ function App() {
     setInput(event.target.value);
   };
 
-  const handleonButtonSubmit = () => {
+  const handleOnPictureSubmit = () => {
     setImageUrlResponse(input);
     fetch('https://api.clarifai.com/v2/models/' + MODEL_ID + '/outputs', returnClarifaiRequestOptions(input))
       .then((response) => response.json())
       .then((data) => {
+        if (data) {
+          fetch('http://localhost:3000/image', {
+            method: 'put',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              id: user.id,
+            }),
+          })
+            .then((response) => response.json())
+            .then((count) => {
+              console.log(count);
+              setUser({ ...user, entries: count });
+            });
+        }
         displayFace(calculateFaceLocation(data));
       })
       .catch((err) => console.log(err));
@@ -129,12 +145,12 @@ function App() {
       {route === 'home' ? (
         <div>
           <Logo />
-          <Rank />
-          <ImageLinkForm onInputChange={handleInputchange} onButtonSubmit={handleonButtonSubmit} />
+          <Rank name={user.name} entries={user.entries} />
+          <ImageLinkForm onInputChange={handleInputchange} onButtonSubmit={handleOnPictureSubmit} />
           <FaceRecognition boxes={box} imageUrl={imageUrlResponse} />
         </div>
       ) : route === 'signin' ? (
-        <Signin onRouteChange={handleOnRouteChange} />
+        <Signin loadUser={handleLoadUser} onRouteChange={handleOnRouteChange} />
       ) : (
         <Register loadUser={handleLoadUser} onRouteChange={handleOnRouteChange} />
       )}
