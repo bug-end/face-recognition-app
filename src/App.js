@@ -23,14 +23,29 @@ function App() {
     joined: '',
   });
 
+  const resetState = () => {
+    setImageUrlResponse('');
+    setInput('');
+    setBox([]);
+    setRoute('signin');
+    setIsSignedIn(false);
+    setUser({
+      id: '',
+      name: '',
+      email: '',
+      entries: 0,
+      joined: '',
+    });
+  };
+
   const PAT = 'd0e629f380a14f6babfa9cc843c8e989';
   const USER_ID = 'bielecki';
   const APP_ID = 'face-recognition-app';
   const MODEL_ID = 'face-detection';
 
   useEffect(() => {
-    fetch('http://localhost:3000/')
-      .then((response) => response.json())
+    fetch('http://localhost:4000/')
+      .then((response) => response.text())
       .then((data) => console.log(data));
   }, []);
 
@@ -110,7 +125,7 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          fetch('http://localhost:3000/image', {
+          fetch('http://localhost:4000/image', {
             method: 'put',
             headers: {
               'Content-Type': 'application/json',
@@ -120,10 +135,8 @@ function App() {
             }),
           })
             .then((response) => response.json())
-            .then((count) => {
-              console.log(count);
-              setUser({ ...user, entries: count });
-            });
+            .then((count) => setUser({ ...user, entries: count }))
+            .catch(console.log);
         }
         displayFace(calculateFaceLocation(data));
       })
@@ -132,7 +145,7 @@ function App() {
 
   const handleOnRouteChange = (route) => {
     if (route === 'signout') {
-      setIsSignedIn(false);
+      resetState();
     } else if (route === 'home') {
       setIsSignedIn(true);
     }

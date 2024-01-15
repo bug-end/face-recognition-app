@@ -18,7 +18,7 @@ const Register = ({ onRouteChange, loadUser }) => {
   };
 
   const onSubmitRegister = () => {
-    fetch('http://localhost:3000/register', {
+    fetch('http://localhost:4000/register', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -36,7 +36,6 @@ const Register = ({ onRouteChange, loadUser }) => {
           onRouteChange('home');
         }
       });
-    console.log(email, password);
   };
 
   return (

@@ -13,7 +13,7 @@ const Signin = ({ onRouteChange, loadUser }) => {
   };
 
   const onSubmitSignIn = () => {
-    fetch('http://localhost:3000/signin', {
+    fetch('http://localhost:4000/signin', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -30,7 +30,6 @@ const Signin = ({ onRouteChange, loadUser }) => {
           onRouteChange('home');
         }
       });
-    console.log(email, password);
   };
 
   return (
