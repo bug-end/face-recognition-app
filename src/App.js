@@ -38,11 +38,6 @@ function App() {
     });
   };
 
-  const PAT = 'd0e629f380a14f6babfa9cc843c8e989';
-  const USER_ID = 'bielecki';
-  const APP_ID = 'face-recognition-app';
-  const MODEL_ID = 'face-detection';
-
   useEffect(() => {
     fetch('http://localhost:4000/')
       .then((response) => response.text())
@@ -57,37 +52,6 @@ function App() {
       entries: data.entries,
       joined: data.joined,
     });
-  };
-
-  const returnClarifaiRequestOptions = (imageUrl) => {
-    const IMAGE_URL = imageUrl;
-
-    const raw = JSON.stringify({
-      user_app_id: {
-        user_id: USER_ID,
-        app_id: APP_ID,
-      },
-      inputs: [
-        {
-          data: {
-            image: {
-              url: IMAGE_URL,
-            },
-          },
-        },
-      ],
-    });
-
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        Authorization: 'Key ' + PAT,
-      },
-      body: raw,
-    };
-
-    return requestOptions;
   };
 
   const calculateFaceLocation = (data) => {
@@ -121,7 +85,15 @@ function App() {
 
   const handleOnPictureSubmit = () => {
     setImageUrlResponse(input);
-    fetch('https://api.clarifai.com/v2/models/' + MODEL_ID + '/outputs', returnClarifaiRequestOptions(input))
+    fetch('http://localhost:4000/imageurl', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        input: input,
+      }),
+    })
       .then((response) => response.json())
       .then((data) => {
         if (data) {
