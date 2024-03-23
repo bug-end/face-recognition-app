@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { signIn } from '../../api/requests';
 
 const Signin = ({ onRouteChange, loadUser }) => {
   const [email, setEmail] = useState('');
@@ -13,23 +14,12 @@ const Signin = ({ onRouteChange, loadUser }) => {
   };
 
   const onSubmitSignIn = () => {
-    fetch('http://localhost:4000/signin', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    })
-      .then((response) => response.json())
-      .then((user) => {
-        if (user.id) {
-          loadUser(user);
-          onRouteChange('home');
-        }
-      });
+    signIn(email, password).then((user) => {
+      if (user.id) {
+        loadUser(user);
+        onRouteChange('home');
+      }
+    });
   };
 
   return (

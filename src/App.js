@@ -8,6 +8,7 @@ import ParticlesBg from 'particles-bg';
 import { useState, useEffect } from 'react';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
+import { detectFace, updateEntries } from './api/requests';
 
 function App() {
   const [imageUrlResponse, setImageUrlResponse] = useState('');
@@ -85,28 +86,10 @@ function App() {
 
   const handleOnPictureSubmit = () => {
     setImageUrlResponse(input);
-    fetch('http://localhost:4000/imageurl', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        input: input,
-      }),
-    })
-      .then((response) => response.json())
+    detectFace(input)
       .then((data) => {
         if (data) {
-          fetch('http://localhost:4000/image', {
-            method: 'put',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              id: user.id,
-            }),
-          })
-            .then((response) => response.json())
+          updateEntries(user.id)
             .then((count) => setUser({ ...user, entries: count }))
             .catch(console.log);
         }
