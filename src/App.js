@@ -8,7 +8,7 @@ import ParticlesBg from 'particles-bg';
 import { useState, useEffect } from 'react';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
-import { detectFace, updateEntries } from './api/requests';
+import { detectFace, updateEntries, checkServerStatus } from './api/requests';
 
 function App() {
   const [imageUrlResponse, setImageUrlResponse] = useState('');
@@ -40,9 +40,9 @@ function App() {
   };
 
   useEffect(() => {
-    fetch('http://localhost:4000/')
-      .then((response) => response.text())
-      .then((data) => console.log(data));
+    checkServerStatus()
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err));
   }, []);
 
   const handleLoadUser = (data) => {

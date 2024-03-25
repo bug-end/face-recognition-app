@@ -1,5 +1,11 @@
+const apiUrl = process.env.REACT_APP_API_URL;
+
+export const checkServerStatus = () => {
+  return fetch(`${apiUrl}/`).then((response) => response.text());
+};
+
 export const registerUser = (email, password, name) => {
-  return fetch('http://localhost:4000/register', {
+  return fetch(`${apiUrl}/register`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -13,7 +19,7 @@ export const registerUser = (email, password, name) => {
 };
 
 export const signIn = (email, password) => {
-  return fetch('http://localhost:4000/signin', {
+  return fetch(`${apiUrl}/signin`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -26,7 +32,7 @@ export const signIn = (email, password) => {
 };
 
 export const detectFace = (input) => {
-  return fetch('http://localhost:4000/imageurl', {
+  return fetch(`${apiUrl}/imageurl`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -38,7 +44,7 @@ export const detectFace = (input) => {
 };
 
 export const updateEntries = (userId) => {
-  return fetch('http://localhost:4000/image', {
+  return fetch(`${apiUrl}/image`, {
     method: 'put',
     headers: {
       'Content-Type': 'application/json',
