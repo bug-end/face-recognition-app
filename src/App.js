@@ -90,10 +90,12 @@ function App() {
       .then((data) => {
         if (data) {
           updateEntries(user.id)
-            .then((count) => setUser({ ...user, entries: count }))
-            .catch(console.log);
+            .then((count) => {
+              setUser({ ...user, entries: count });
+              displayFace(calculateFaceLocation(data));
+            })
+            .catch((err) => console.log(err));
         }
-        displayFace(calculateFaceLocation(data));
       })
       .catch((err) => console.log(err));
   };

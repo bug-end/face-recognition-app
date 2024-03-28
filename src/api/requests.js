@@ -40,7 +40,16 @@ export const detectFace = (input) => {
     body: JSON.stringify({
       input: input,
     }),
-  }).then((response) => response.json());
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Error detecting face');
+      }
+      return response.json();
+    })
+    .catch((err) => {
+      throw err;
+    });
 };
 
 export const updateEntries = (userId) => {
