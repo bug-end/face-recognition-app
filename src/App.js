@@ -80,24 +80,26 @@ function App() {
     setBox(boundingBox);
   };
 
-  const handleInputchange = (event) => {
+  const handleInputChange = (event) => {
     setInput(event.target.value);
   };
 
   const handleOnPictureSubmit = () => {
     setImageUrlResponse(input);
-    detectFace(input)
-      .then((data) => {
-        if (data) {
-          updateEntries(user.id)
-            .then((count) => {
-              setUser({ ...user, entries: count });
-              displayFace(calculateFaceLocation(data));
-            })
-            .catch((err) => console.log(err));
-        }
-      })
-      .catch((err) => console.log(err));
+    if (input.length > 0) {
+      detectFace(input)
+        .then((data) => {
+          if (data) {
+            updateEntries(user.id)
+              .then((count) => {
+                setUser({ ...user, entries: count });
+                displayFace(calculateFaceLocation(data));
+              })
+              .catch((err) => console.log(err));
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   const handleOnRouteChange = (route) => {
@@ -116,7 +118,7 @@ function App() {
         <div>
           <Logo />
           <Rank name={user.name} entries={user.entries} />
-          <ImageLinkForm onInputChange={handleInputchange} onButtonSubmit={handleOnPictureSubmit} />
+          <ImageLinkForm onInputChange={handleInputChange} onButtonSubmit={handleOnPictureSubmit} />
           <FaceRecognition boxes={box} imageUrl={imageUrlResponse} />
         </div>
       ) : route === 'signin' ? (
