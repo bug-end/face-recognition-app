@@ -43,7 +43,7 @@ function App() {
 
   useEffect(() => {
     setIsLoading(true);
-    const minLoaderDisplayTime = 1000;
+    const minLoaderDisplayTime = 3000;
     const startTime = Date.now();
 
     checkServerStatus()
@@ -53,7 +53,7 @@ function App() {
 
         setTimeout(() => {
           console.log(data);
-          // setIsLoading(false);
+          setIsLoading(false);
         }, remainingTime);
       })
       .catch((err) => console.error(err));
@@ -130,7 +130,7 @@ function App() {
       {isLoading ? (
         <LoadingOverlay />
       ) : (
-        <>
+        <div className='fade-in'>
           <Navigation isSignedIn={isSignedIn} onRouteChange={handleOnRouteChange} />
           {route === 'home' ? (
             <div>
@@ -144,9 +144,9 @@ function App() {
           ) : (
             <Register loadUser={handleLoadUser} onRouteChange={handleOnRouteChange} />
           )}
-          <ParticlesBg type='cobweb' bg={true} num={35} />
-        </>
+        </div>
       )}
+      <ParticlesBg type='cobweb' bg={true} num={35} />
     </div>
   );
 }
