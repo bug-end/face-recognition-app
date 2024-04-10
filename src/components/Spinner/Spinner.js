@@ -1,7 +1,6 @@
 import React from 'react';
-
-import styles from './Spinner.module.css';
+import { RotatingSquare } from 'react-loader-spinner';
 
 export const Spinner = () => {
-  return <div className={styles.wrapper}>Loading data please wait...</div>;
+  return <RotatingSquare visible={true} height='100' width='100' color='#000' ariaLabel='rotating-square-loading' />;
 };
