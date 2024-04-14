@@ -1,15 +1,18 @@
-import './App.css';
+import { useState, useEffect } from 'react';
+
 import Logo from './components/Logo/Logo';
 import Navigation from './components/Navigation/Navigation';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import ParticlesBg from 'particles-bg';
-import { useState, useEffect } from 'react';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
-import { detectFace, updateEntries, checkServerStatus } from './api/requests';
 import { LoadingOverlay } from './components/LoadingOverlay/LoadingOverlay';
+
+import { detectFace, updateEntries, checkServerStatus } from './api/requests';
+
+import styles from './App.module.css';
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -126,24 +129,26 @@ function App() {
   };
 
   return (
-    <div className='App'>
+    <div>
       {isLoading ? (
         <LoadingOverlay />
       ) : (
-        <div className='fade-in'>
+        <div className={styles.fadeIn}>
           <Navigation isSignedIn={isSignedIn} onRouteChange={handleOnRouteChange} />
-          {route === 'home' ? (
-            <div>
-              <Logo />
-              <Rank name={user.name} entries={user.entries} />
-              <ImageLinkForm onInputChange={handleInputChange} onButtonSubmit={handleOnPictureSubmit} />
-              <FaceRecognition boxes={box} imageUrl={imageUrlResponse} />
-            </div>
-          ) : route === 'signin' ? (
-            <Signin loadUser={handleLoadUser} onRouteChange={handleOnRouteChange} />
-          ) : (
-            <Register loadUser={handleLoadUser} onRouteChange={handleOnRouteChange} />
-          )}
+          <div className={styles.pageRow}>
+            {route === 'home' ? (
+              <div>
+                <Logo />
+                <Rank name={user.name} entries={user.entries} />
+                <ImageLinkForm onInputChange={handleInputChange} onButtonSubmit={handleOnPictureSubmit} />
+                <FaceRecognition boxes={box} imageUrl={imageUrlResponse} />
+              </div>
+            ) : route === 'signin' ? (
+              <Signin loadUser={handleLoadUser} onRouteChange={handleOnRouteChange} />
+            ) : (
+              <Register loadUser={handleLoadUser} onRouteChange={handleOnRouteChange} />
+            )}
+          </div>
         </div>
       )}
       <ParticlesBg type='cobweb' bg={true} num={35} />

@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -11,6 +7,11 @@
   }
 }
 
-.fade-in {
+.fadeIn {
   animation: fadeIn 0.5s ease-in;
+}
+
+.pageRow {
+  margin: 0 auto;
+  padding: 0 2rem;
 }
