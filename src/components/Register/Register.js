@@ -68,6 +68,16 @@ const Register = ({ onRouteChange, loadUser }) => {
                 id='password'
                 onChange={onPasswordChange}
               />
+              <div style={{ textAlign: 'left' }}>
+                <p>Password requirements:</p>
+                <ul style={{ paddingLeft: '20px' }}>
+                  <li>At least 8 characters long</li>
+                  <li>At least one digit</li>
+                  <li>At least one lowercase letter</li>
+                  <li>At least one uppercase letter</li>
+                  <li>At least one special character</li>
+                </ul>
+              </div>
             </div>
           </fieldset>
           <div>
