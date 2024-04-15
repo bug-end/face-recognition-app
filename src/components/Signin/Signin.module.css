@@ -20,3 +20,14 @@
   padding: 0;
   margin: 0;
 }
+
+.legend {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.label {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-weight: 600;
+}

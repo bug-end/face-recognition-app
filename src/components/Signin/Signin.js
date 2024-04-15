@@ -28,9 +28,9 @@ const Signin = ({ onRouteChange, loadUser }) => {
     <article className={styles.wrapper}>
       <div className={styles.signinBox}>
         <fieldset id='sign_up' className={styles.fieldset}>
-          <legend className='f1 fw6 ph0 mh0'>Sign In</legend>
+          <legend className={styles.legend}>Sign In</legend>
           <div className='mt3'>
-            <label className='db fw6 lh-copy f6' htmlFor='email-address'>
+            <label className={styles.label} htmlFor='email-address'>
               Email
             </label>
             <input
@@ -42,7 +42,7 @@ const Signin = ({ onRouteChange, loadUser }) => {
             />
           </div>
           <div className='mv3'>
-            <label className='db fw6 lh-copy f6' htmlFor='password'>
+            <label className={styles.label} htmlFor='password'>
               Password
             </label>
             <input
