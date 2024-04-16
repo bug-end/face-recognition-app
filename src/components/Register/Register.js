@@ -57,7 +57,7 @@ const Register = ({ onRouteChange, loadUser }) => {
             </div>
           </fieldset>
           <div>
-            <input onClick={onSubmitRegister} type='submit' value='Register' />
+            <button onClick={onSubmitRegister} type='submit' value='Register' />
           </div>
         </div>
       </div>
