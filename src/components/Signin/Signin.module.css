@@ -24,10 +24,39 @@
 .legend {
   font-size: 3rem;
   font-weight: 600;
+  margin-bottom: 1rem;
 }
 
 .label {
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.5;
   font-weight: 600;
+}
+
+.inputWrapper {
+  margin-bottom: 1rem;
+}
+
+.input {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #000;
+  border-radius: 0.25rem;
+  background-color: transparent;
+}
+
+.buttonsWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.button {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #000;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  cursor: pointer;
 }

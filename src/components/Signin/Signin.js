@@ -29,43 +29,36 @@ const Signin = ({ onRouteChange, loadUser }) => {
       <div className={styles.signinBox}>
         <fieldset id='sign_up' className={styles.fieldset}>
           <legend className={styles.legend}>Sign In</legend>
-          <div className='mt3'>
+          <div className={styles.inputWrapper}>
             <label className={styles.label} htmlFor='email-address'>
               Email
             </label>
             <input
-              className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
+              className={styles.input}
               type='email'
               name='email-address'
               id='email-address'
               onChange={onEmailChange}
             />
           </div>
-          <div className='mv3'>
+          <div className={styles.inputWrapper}>
             <label className={styles.label} htmlFor='password'>
               Password
             </label>
-            <input
-              className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
-              type='password'
-              name='password'
-              id='password'
-              onChange={onPasswordChange}
-            />
+            <input className={styles.input} type='password' name='password' id='password' onChange={onPasswordChange} />
           </div>
         </fieldset>
-        <div>
-          <input
-            onClick={onSubmitSignIn}
-            className='b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib'
-            type='submit'
-            value='Sign in'
-          />
-        </div>
-        <div className='lh-copy mt3'>
-          <p onClick={() => onRouteChange('register')} className='f6 link dim black db pointer'>
-            Register
-          </p>
+        <div className={styles.buttonsWrapper}>
+          <div>
+            <button onClick={onSubmitSignIn} className={styles.button} type='submit'>
+              Sign in
+            </button>
+          </div>
+          <div>
+            <button onClick={() => onRouteChange('register')} className={styles.button}>
+              Register
+            </button>
+          </div>
         </div>
       </div>
     </article>
