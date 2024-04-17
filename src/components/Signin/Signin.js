@@ -1,4 +1,7 @@
 import { useState } from 'react';
+
+import { Button } from '../Button/Button';
+
 import { signIn } from '../../api/requests';
 
 import styles from './Signin.module.css';
@@ -50,14 +53,10 @@ const Signin = ({ onRouteChange, loadUser }) => {
         </fieldset>
         <div className={styles.buttonsWrapper}>
           <div>
-            <button onClick={onSubmitSignIn} className={styles.button} type='submit'>
-              Sign in
-            </button>
+            <Button onClick={onSubmitSignIn}>Sign In</Button>
           </div>
           <div>
-            <button onClick={() => onRouteChange('register')} className={styles.button}>
-              Register
-            </button>
+            <Button onClick={() => onRouteChange('register')}>Register</Button>
           </div>
         </div>
       </div>
