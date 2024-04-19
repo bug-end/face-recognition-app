@@ -56,7 +56,9 @@ const Signin = ({ onRouteChange, loadUser }) => {
             <Button onClick={onSubmitSignIn}>Sign In</Button>
           </div>
           <div>
-            <Button onClick={() => onRouteChange('register')}>Register</Button>
+            <Button onClick={() => onRouteChange('register')} variant='secondary'>
+              Register
+            </Button>
           </div>
         </div>
       </div>

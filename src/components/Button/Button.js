@@ -4,9 +4,15 @@ import styles from './Button.module.css';
 
 const cx = classNames.bind(styles);
 
-export const Button = ({ children, onClick, variant, size }) => {
+export const Button = ({ children, onClick, variant = 'primary', size }) => {
+  const buttonClasses = cx({
+    [styles.button]: true,
+    [styles.primary]: variant === 'primary',
+    [styles.secondary]: variant === 'secondary',
+  });
+
   return (
-    <button className={styles.button} onClick={onClick}>
+    <button className={buttonClasses} onClick={onClick}>
       {children}
     </button>
   );
