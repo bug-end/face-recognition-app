@@ -1,5 +1,6 @@
 .button {
   font-size: 1rem;
+  font-weight: 600;
   padding: 0.5rem;
   border: 1px solid #000;
   border-radius: 0.25rem;
@@ -8,8 +9,18 @@
 }
 
 .primary {
+  transition: transform 0.1s ease-in-out;
+}
+
+.primary:hover {
+  transform: scale(1.1);
 }
 
 .secondary {
   border: none;
+  transition: transform 0.1s ease-in-out;
+}
+
+.secondary:hover {
+  transform: scale(1.1);
 }
