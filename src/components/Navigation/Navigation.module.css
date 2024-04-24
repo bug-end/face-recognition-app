@@ -1,0 +1,6 @@
+.navigationWrapper {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 1.5rem;
+  padding: 1rem 2rem;
+}

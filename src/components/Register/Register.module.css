@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   justify-content: center;
+  margin-top: 3rem;
 }
 
 .registerBox {
@@ -51,10 +52,4 @@ input:hover,
 input:focus {
   background-color: #000;
   color: #fff;
-}
-
-.buttonsWrapper {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1rem;
 }

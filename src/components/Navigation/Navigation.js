@@ -1,3 +1,7 @@
+import { Button } from '../Button/Button';
+
+import styles from './Navigation.module.css';
+
 const Navigation = ({ onRouteChange, isSignedIn }) => {
   if (isSignedIn) {
     return (
@@ -7,9 +11,13 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
     );
   } else {
     return (
-      <nav>
-        <button onClick={() => onRouteChange('signin')}>Sign In</button>
-        <button onClick={() => onRouteChange('register')}>Register</button>
+      <nav className={styles.navigationWrapper}>
+        <Button onClick={() => onRouteChange('signin')} variant='secondary'>
+          Sign In
+        </Button>
+        <Button onClick={() => onRouteChange('register')} variant='secondary'>
+          Register
+        </Button>
       </nav>
     );
   }
