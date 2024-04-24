@@ -55,31 +55,23 @@ const Register = ({ onRouteChange, loadUser }) => {
               className={styles.input}
             />
           </div>
-          <div>
-            <div className={styles.inputWrapper}>
-              <label htmlFor='password' className={styles.label}>
-                Password
-              </label>
-              <input
-                type='password'
-                name='password'
-                id='password'
-                onChange={onPasswordChange}
-                className={styles.input}
-              />
-            </div>
-            <div>
-              <p>Password requirements:</p>
-              <ul>
-                <li>At least 8 characters long</li>
-                <li>At least one digit</li>
-                <li>At least one lowercase letter</li>
-                <li>At least one uppercase letter</li>
-                <li>At least one special character</li>
-              </ul>
-            </div>
+          <div className={styles.inputWrapper}>
+            <label htmlFor='password' className={styles.label}>
+              Password
+            </label>
+            <input type='password' name='password' id='password' onChange={onPasswordChange} className={styles.input} />
           </div>
         </fieldset>
+        <div className={styles.passwordRequirementsWrapper}>
+          <p>Password requirements:</p>
+          <ul className={styles.passwordRequirementsList}>
+            <li className={styles.passwordRequirementItem}>At least 8 characters long</li>
+            <li className={styles.passwordRequirementItem}>At least one digit</li>
+            <li className={styles.passwordRequirementItem}>At least one lowercase letter</li>
+            <li className={styles.passwordRequirementItem}>At least one uppercase letter</li>
+            <li className={styles.passwordRequirementItem}>At least one special character</li>
+          </ul>
+        </div>
         <div>
           <Button onClick={onSubmitRegister} type='submit'>
             Register

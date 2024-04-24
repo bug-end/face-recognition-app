@@ -7,7 +7,7 @@ const Logo = () => {
   return (
     <div>
       <Tilt className={styles.tiltWrapper}>
-        <img src={brain} alt='logo' />
+        <img src={brain} alt='logo' className={styles.logo} />
       </Tilt>
     </div>
   );

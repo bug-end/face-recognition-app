@@ -53,3 +53,16 @@ input:focus {
   background-color: #000;
   color: #fff;
 }
+
+.passwordRequirementsWrapper {
+  text-align: left;
+  font-weight: bold;
+}
+
+.passwordRequirementsList {
+  padding-left: 1rem;
+}
+
+.passwordRequirementItem {
+  font-weight: bold;
+}
