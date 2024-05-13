@@ -1,0 +1,68 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.registerBox {
+  text-align: center;
+  box-sizing: border-box;
+  padding: 2rem;
+  width: 100%;
+  max-width: 32rem;
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: rgb(0 0 0 / 80%);
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.legend {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.label {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.inputWrapper {
+  margin-bottom: 1rem;
+}
+
+.input {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 0.25rem;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+input:hover,
+input:focus {
+  background-color: #000;
+  color: #fff;
+}
+
+.passwordRequirementsWrapper {
+  text-align: left;
+  font-weight: bold;
+}
+
+.passwordRequirementsList {
+  padding-left: 1rem;
+}
+
+.passwordRequirementItem {
+  font-weight: bold;
+}

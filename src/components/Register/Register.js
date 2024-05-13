@@ -1,5 +1,10 @@
 import { useState } from 'react';
+
+import { Button } from '../Button/Button';
+
 import { registerUser } from '../../api/requests';
+
+import styles from './Register.module.css';
 
 const Register = ({ onRouteChange, loadUser }) => {
   const [email, setEmail] = useState('');
@@ -28,66 +33,49 @@ const Register = ({ onRouteChange, loadUser }) => {
   };
 
   return (
-    <article className='br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center'>
-      <div className='pa4 black-80'>
-        <div className='measure'>
-          <fieldset id='sign_up' className='ba b--transparent ph0 mh0'>
-            <legend className='f1 fw6 ph0 mh0'>Register</legend>
-            <div className='mt3'>
-              <label className='db fw6 lh-copy f6' htmlFor='name'>
-                Name
-              </label>
-              <input
-                className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
-                type='text'
-                name='name'
-                id='name'
-                onChange={onNameChange}
-              />
-            </div>
-            <div className='mt3'>
-              <label className='db fw6 lh-copy f6' htmlFor='email-address'>
-                Email
-              </label>
-              <input
-                className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
-                type='email'
-                name='email-address'
-                id='email-address'
-                onChange={onEmailChange}
-              />
-            </div>
-            <div className='mv3'>
-              <label className='db fw6 lh-copy f6' htmlFor='password'>
-                Password
-              </label>
-              <input
-                className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
-                type='password'
-                name='password'
-                id='password'
-                onChange={onPasswordChange}
-              />
-              <div style={{ textAlign: 'left' }}>
-                <p>Password requirements:</p>
-                <ul style={{ paddingLeft: '20px' }}>
-                  <li>At least 8 characters long</li>
-                  <li>At least one digit</li>
-                  <li>At least one lowercase letter</li>
-                  <li>At least one uppercase letter</li>
-                  <li>At least one special character</li>
-                </ul>
-              </div>
-            </div>
-          </fieldset>
-          <div>
+    <article className={styles.wrapper}>
+      <div className={styles.registerBox}>
+        <fieldset id='sign_up' className={styles.fieldset}>
+          <legend className={styles.legend}>Register</legend>
+          <div className={styles.inputWrapper}>
+            <label htmlFor='name' className={styles.label}>
+              Name
+            </label>
+            <input type='text' name='name' id='name' onChange={onNameChange} className={styles.input} />
+          </div>
+          <div className={styles.inputWrapper}>
+            <label htmlFor='email-address' className={styles.label}>
+              Email
+            </label>
             <input
-              onClick={onSubmitRegister}
-              className='b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib'
-              type='submit'
-              value='Register'
+              type='email'
+              name='email-address'
+              id='email-address'
+              onChange={onEmailChange}
+              className={styles.input}
             />
           </div>
+          <div className={styles.inputWrapper}>
+            <label htmlFor='password' className={styles.label}>
+              Password
+            </label>
+            <input type='password' name='password' id='password' onChange={onPasswordChange} className={styles.input} />
+          </div>
+        </fieldset>
+        <div className={styles.passwordRequirementsWrapper}>
+          <p>Password requirements:</p>
+          <ul className={styles.passwordRequirementsList}>
+            <li className={styles.passwordRequirementItem}>At least 8 characters long</li>
+            <li className={styles.passwordRequirementItem}>At least one digit</li>
+            <li className={styles.passwordRequirementItem}>At least one lowercase letter</li>
+            <li className={styles.passwordRequirementItem}>At least one uppercase letter</li>
+            <li className={styles.passwordRequirementItem}>At least one special character</li>
+          </ul>
+        </div>
+        <div>
+          <Button onClick={onSubmitRegister} type='submit'>
+            Register
+          </Button>
         </div>
       </div>
     </article>
