@@ -3,8 +3,8 @@ import styles from './FaceRecognition.module.css';
 const FaceRecognition = ({ imageUrl, boxes }) => {
   return (
     <div>
-      <div>
-        <img id='inputimage' src={imageUrl} alt='' width='500px' height='auto' />
+      <div className={styles.imgWrapper}>
+        <img id='inputimage' src={imageUrl} alt='' className={styles.img} />
         {boxes.map((box, i) => {
           return (
             <div

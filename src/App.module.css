@@ -15,3 +15,11 @@
   margin: 0 auto;
   padding: 0 2rem;
 }
+
+.headingWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}

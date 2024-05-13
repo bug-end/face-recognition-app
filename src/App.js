@@ -138,8 +138,10 @@ function App() {
           <div className={styles.pageRow}>
             {route === 'home' ? (
               <div>
-                <Logo />
-                <Rank name={user.name} entries={user.entries} />
+                <div className={styles.headingWrapper}>
+                  <Logo />
+                  <Rank name={user.name} entries={user.entries} />
+                </div>
                 <ImageLinkForm onInputChange={handleInputChange} onButtonSubmit={handleOnPictureSubmit} />
                 <FaceRecognition boxes={box} imageUrl={imageUrlResponse} />
               </div>
