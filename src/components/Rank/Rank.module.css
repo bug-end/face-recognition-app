@@ -1,0 +1,14 @@
+.rankWrapper {
+  text-align: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.entries {
+  font-size: 3rem;
+  font-weight: bold;
+}

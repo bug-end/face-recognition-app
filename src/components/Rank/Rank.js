@@ -1,8 +1,10 @@
+import styles from './Rank.module.css';
+
 const Rank = ({ name, entries }) => {
   return (
-    <div>
-      <div>{`${name}, your current entry count is...`}</div>
-      <div>{entries}</div>
+    <div className={styles.rankWrapper}>
+      <div className={styles.title}>{`${name}, your current entry count is...`}</div>
+      <div className={styles.entries}>{entries}</div>
     </div>
   );
 };
