@@ -106,6 +106,7 @@ function App() {
     if (input.length > 0) {
       detectFace(input)
         .then((data) => {
+          setInput('');
           if (data) {
             updateEntries(user.id)
               .then((count) => {
@@ -142,7 +143,11 @@ function App() {
                   <Logo />
                   <Rank name={user.name} entries={user.entries} />
                 </div>
-                <ImageLinkForm onInputChange={handleInputChange} onButtonSubmit={handleOnPictureSubmit} />
+                <ImageLinkForm
+                  onInputChange={handleInputChange}
+                  onButtonSubmit={handleOnPictureSubmit}
+                  inputValue={input}
+                />
                 <FaceRecognition boxes={box} imageUrl={imageUrlResponse} />
               </div>
             ) : route === 'signin' ? (
