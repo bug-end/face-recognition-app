@@ -158,7 +158,7 @@ function App() {
           </div>
         </div>
       )}
-      <ParticlesBg type='cobweb' bg={true} num={35} />
+      <ParticlesBg type='cobweb' bg={true} num={9} />
     </div>
   );
 }
