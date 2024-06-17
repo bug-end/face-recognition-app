@@ -41,7 +41,14 @@ const Register = ({ onRouteChange, loadUser }) => {
             <label htmlFor='name' className={styles.label}>
               Name
             </label>
-            <input type='text' name='name' id='name' onChange={onNameChange} className={styles.input} />
+            <input
+              type='text'
+              name='name'
+              id='name'
+              onChange={onNameChange}
+              className={styles.input}
+              autoComplete='off'
+            />
           </div>
           <div className={styles.inputWrapper}>
             <label htmlFor='email-address' className={styles.label}>
@@ -53,13 +60,21 @@ const Register = ({ onRouteChange, loadUser }) => {
               id='email-address'
               onChange={onEmailChange}
               className={styles.input}
+              autoComplete='off'
             />
           </div>
           <div className={styles.inputWrapper}>
             <label htmlFor='password' className={styles.label}>
               Password
             </label>
-            <input type='password' name='password' id='password' onChange={onPasswordChange} className={styles.input} />
+            <input
+              type='password'
+              name='password'
+              id='password'
+              onChange={onPasswordChange}
+              className={styles.input}
+              autoComplete='off'
+            />
           </div>
         </fieldset>
         <div className={styles.passwordRequirementsWrapper}>

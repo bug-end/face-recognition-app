@@ -42,13 +42,21 @@ const Signin = ({ onRouteChange, loadUser }) => {
               name='email-address'
               id='email-address'
               onChange={onEmailChange}
+              autoComplete='off'
             />
           </div>
           <div className={styles.inputWrapper}>
             <label className={styles.label} htmlFor='password'>
               Password
             </label>
-            <input className={styles.input} type='password' name='password' id='password' onChange={onPasswordChange} />
+            <input
+              className={styles.input}
+              type='password'
+              name='password'
+              id='password'
+              onChange={onPasswordChange}
+              autoComplete='off'
+            />
           </div>
         </fieldset>
         <div className={styles.buttonsWrapper}>

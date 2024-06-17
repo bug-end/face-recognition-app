@@ -5,7 +5,7 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
     <div className={styles.imageLinkFormWrapper}>
       <p className={styles.description}>This Magic Brain will detect faces in your pictures. Give it a try</p>
       <div>
-        <input type='text' onChange={onInputChange} />
+        <input type='text' onChange={onInputChange} autoComplete='off' />
         <button onClick={onButtonSubmit}>Detect</button>
       </div>
     </div>
