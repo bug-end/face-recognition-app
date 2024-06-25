@@ -43,6 +43,7 @@ const Signin = ({ onRouteChange, loadUser }) => {
               id='email-address'
               onChange={onEmailChange}
               autoComplete='off'
+              required
             />
           </div>
           <div className={styles.inputWrapper}>

@@ -14,7 +14,8 @@
   border-radius: 0.5rem;
   border: 1px solid rgba(0, 0, 0, 0.15);
   color: rgb(0 0 0 / 80%);
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(2px);
 }
 
 .fieldset {
