@@ -3,7 +3,7 @@ import brain from './brain.png';
 
 import styles from './Logo.module.css';
 
-const Logo = () => {
+export const Logo = () => {
   return (
     <div>
       <Tilt className={styles.tiltWrapper}>
@@ -12,5 +12,3 @@ const Logo = () => {
     </div>
   );
 };
-
-export default Logo;

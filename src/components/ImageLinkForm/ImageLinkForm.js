@@ -1,6 +1,6 @@
 import styles from './ImageLinkForm.module.css';
 
-const ImageLinkForm = ({ onInputChange, onButtonSubmit, inputValue }) => {
+export const ImageLinkForm = ({ onInputChange, onButtonSubmit, inputValue }) => {
   return (
     <div className={styles.imageLinkFormWrapper}>
       <p className={styles.description}>
@@ -17,5 +17,3 @@ const ImageLinkForm = ({ onInputChange, onButtonSubmit, inputValue }) => {
     </div>
   );
 };
-
-export default ImageLinkForm;

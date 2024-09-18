@@ -6,7 +6,7 @@ import { signIn } from '../../api/requests';
 
 import styles from './Signin.module.css';
 
-const Signin = ({ onRouteChange, loadUser }) => {
+export const Signin = ({ onRouteChange, loadUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -74,5 +74,3 @@ const Signin = ({ onRouteChange, loadUser }) => {
     </article>
   );
 };
-
-export default Signin;

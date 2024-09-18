@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
-import Logo from './components/Logo/Logo';
-import Navigation from './components/Navigation/Navigation';
-import FaceRecognition from './components/FaceRecognition/FaceRecognition';
-import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
-import Rank from './components/Rank/Rank';
+import { Logo } from './components/Logo/Logo';
+import { Navigation } from './components/Navigation/Navigation';
+import { FaceRecognition } from './components/FaceRecognition/FaceRecognition';
+import { ImageLinkForm } from './components/ImageLinkForm/ImageLinkForm';
+import { Rank } from './components/Rank/Rank';
 import ParticlesBg from 'particles-bg';
-import Signin from './components/Signin/Signin';
-import Register from './components/Register/Register';
+import { Signin } from './components/Signin/Signin';
+import { Register } from './components/Register/Register';
 import { LoadingOverlay } from './components/LoadingOverlay/LoadingOverlay';
 
 import { detectFace, updateEntries, checkServerStatus } from './api/requests';

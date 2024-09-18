@@ -1,6 +1,6 @@
 import styles from './FaceRecognition.module.css';
 
-const FaceRecognition = ({ imageUrl, boxes }) => {
+export const FaceRecognition = ({ imageUrl, boxes }) => {
   return (
     <div>
       <div className={styles.imgWrapper}>
@@ -18,5 +18,3 @@ const FaceRecognition = ({ imageUrl, boxes }) => {
     </div>
   );
 };
-
-export default FaceRecognition;

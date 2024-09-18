@@ -2,7 +2,7 @@ import { Button } from '../Button/Button';
 
 import styles from './Navigation.module.css';
 
-const Navigation = ({ onRouteChange, isSignedIn }) => {
+export const Navigation = ({ onRouteChange, isSignedIn }) => {
   return (
     <nav className={styles.navigationWrapper}>
       {isSignedIn ? (
@@ -22,5 +22,3 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
     </nav>
   );
 };
-
-export default Navigation;

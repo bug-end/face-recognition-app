@@ -6,7 +6,7 @@ import { registerUser } from '../../api/requests';
 
 import styles from './Register.module.css';
 
-const Register = ({ onRouteChange, loadUser }) => {
+export const Register = ({ onRouteChange, loadUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -96,5 +96,3 @@ const Register = ({ onRouteChange, loadUser }) => {
     </article>
   );
 };
-
-export default Register;
