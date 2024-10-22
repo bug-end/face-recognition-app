@@ -57,13 +57,13 @@ input:focus {
 
 .passwordRequirementsWrapper {
   text-align: left;
+}
+
+.passwordRequirementsTitle {
+  font-size: 1rem;
   font-weight: bold;
 }
 
 .passwordRequirementsList {
   padding-left: 1rem;
-}
-
-.passwordRequirementItem {
-  font-weight: bold;
 }

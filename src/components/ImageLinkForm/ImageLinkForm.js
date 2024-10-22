@@ -1,3 +1,5 @@
+import { Button } from '../Button/Button';
+
 import styles from './ImageLinkForm.module.css';
 
 export const ImageLinkForm = ({ onInputChange, onButtonSubmit, inputValue }) => {
@@ -10,9 +12,7 @@ export const ImageLinkForm = ({ onInputChange, onButtonSubmit, inputValue }) => 
       </p>
       <div className={styles.inputWrapper}>
         <input type='text' onChange={onInputChange} autoComplete='off' className={styles.input} value={inputValue} />
-        <button onClick={onButtonSubmit} className={styles.button}>
-          Detect
-        </button>
+        <Button onClick={onButtonSubmit}>Detect</Button>
       </div>
     </div>
   );

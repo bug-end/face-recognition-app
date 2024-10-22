@@ -78,13 +78,13 @@ export const Register = ({ onRouteChange, loadUser }) => {
           </div>
         </fieldset>
         <div className={styles.passwordRequirementsWrapper}>
-          <p>Password requirements:</p>
+          <p className={styles.passwordRequirementsTitle}>Password requirements:</p>
           <ul className={styles.passwordRequirementsList}>
-            <li className={styles.passwordRequirementItem}>At least 8 characters long</li>
-            <li className={styles.passwordRequirementItem}>At least one digit</li>
-            <li className={styles.passwordRequirementItem}>At least one lowercase letter</li>
-            <li className={styles.passwordRequirementItem}>At least one uppercase letter</li>
-            <li className={styles.passwordRequirementItem}>At least one special character</li>
+            <li>At least 8 characters long</li>
+            <li>At least one digit</li>
+            <li>At least one lowercase letter</li>
+            <li>At least one uppercase letter</li>
+            <li>At least one special character</li>
           </ul>
         </div>
         <div>
