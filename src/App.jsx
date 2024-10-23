@@ -5,7 +5,6 @@ import { Navigation } from './components/Navigation/Navigation';
 import { FaceRecognition } from './components/FaceRecognition/FaceRecognition';
 import { ImageLinkForm } from './components/ImageLinkForm/ImageLinkForm';
 import { Rank } from './components/Rank/Rank';
-import ParticlesBg from 'particles-bg';
 import { Signin } from './components/Signin/Signin';
 import { Register } from './components/Register/Register';
 import { LoadingOverlay } from './components/LoadingOverlay/LoadingOverlay';
@@ -158,7 +157,6 @@ function App() {
           </div>
         </div>
       )}
-      <ParticlesBg type='cobweb' bg={true} num={9} />
     </div>
   );
 }
