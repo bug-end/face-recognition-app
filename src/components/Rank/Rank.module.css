@@ -8,6 +8,11 @@
 }
 
 .entries {
-  font-size: 3rem;
+  font-size: 6rem;
   font-weight: bold;
+  line-height: 1;
+  background: linear-gradient(180deg, rgba(95, 158, 160, 1) 23%, rgba(41, 53, 86, 1) 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  background-clip: text;
 }

@@ -1,6 +1,13 @@
 .navigationWrapper {
+  padding: 1rem 0;
+  background-color: #5f9ea0;
+  -webkit-box-shadow: 0px -6px 14px 6px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px -6px 14px 6px rgba(66, 68, 90, 1);
+  box-shadow: 0px -6px 14px 6px rgba(66, 68, 90, 1);
+}
+
+.navigation {
   display: flex;
   justify-content: flex-end;
   column-gap: 1.5rem;
-  padding: 1rem 2rem;
 }

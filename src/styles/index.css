@@ -6,11 +6,12 @@
 
 body {
   margin: 0;
+  padding: 0;
   min-height: 100vh;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(0deg, #ff5edf 0%, #4faaff 65%);
+  background-color: #fff;
   overflow-x: hidden;
 }
 
@@ -20,8 +21,4 @@ button {
 
 p {
   margin: 0;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

@@ -8,6 +8,7 @@ import { Rank } from './components/Rank/Rank';
 import { Signin } from './components/Signin/Signin';
 import { Register } from './components/Register/Register';
 import { LoadingOverlay } from './components/LoadingOverlay/LoadingOverlay';
+import { PageRow } from './components/PageRow/PageRow';
 
 import { detectFace, updateEntries, checkServerStatus } from './api/requests';
 
@@ -45,7 +46,7 @@ function App() {
 
   useEffect(() => {
     setIsLoading(true);
-    const minLoaderDisplayTime = 3000;
+    const minLoaderDisplayTime = 2000;
     const startTime = Date.now();
 
     checkServerStatus()
@@ -128,35 +129,33 @@ function App() {
     setRoute(route);
   };
 
-  return (
-    <div>
-      {isLoading ? (
-        <LoadingOverlay />
-      ) : (
-        <div className={styles.fadeIn}>
-          <Navigation isSignedIn={isSignedIn} onRouteChange={handleOnRouteChange} />
-          <div className={styles.pageRow}>
-            {route === 'home' ? (
-              <div>
-                <div className={styles.headingWrapper}>
-                  <Logo />
-                  <Rank name={user.name} entries={user.entries} />
-                </div>
-                <ImageLinkForm
-                  onInputChange={handleInputChange}
-                  onButtonSubmit={handleOnPictureSubmit}
-                  inputValue={input}
-                />
-                <FaceRecognition boxes={box} imageUrl={imageUrlResponse} />
+  return isLoading ? (
+    <LoadingOverlay />
+  ) : (
+    <div className={styles.fadeIn}>
+      <Navigation isSignedIn={isSignedIn} onRouteChange={handleOnRouteChange} />
+      <main>
+        <PageRow className={styles.pageRow}>
+          {route === 'home' ? (
+            <>
+              <div className={styles.headingWrapper}>
+                <Logo />
+                <Rank name={user.name} entries={user.entries} />
               </div>
-            ) : route === 'signin' ? (
-              <Signin loadUser={handleLoadUser} onRouteChange={handleOnRouteChange} />
-            ) : (
-              <Register loadUser={handleLoadUser} onRouteChange={handleOnRouteChange} />
-            )}
-          </div>
-        </div>
-      )}
+              <ImageLinkForm
+                onInputChange={handleInputChange}
+                onButtonSubmit={handleOnPictureSubmit}
+                inputValue={input}
+              />
+              <FaceRecognition boxes={box} imageUrl={imageUrlResponse} />
+            </>
+          ) : route === 'signin' ? (
+            <Signin loadUser={handleLoadUser} onRouteChange={handleOnRouteChange} />
+          ) : (
+            <Register loadUser={handleLoadUser} onRouteChange={handleOnRouteChange} />
+          )}
+        </PageRow>
+      </main>
     </div>
   );
 }

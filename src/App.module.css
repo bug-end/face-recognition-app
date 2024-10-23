@@ -11,15 +11,17 @@
   animation: fadeIn 0.5s ease-in;
 }
 
-.pageRow {
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
 .headingWrapper {
   display: flex;
-  flex-direction: column;
-  row-gap: 2rem;
+  gap: 2rem;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
+  padding: 4rem 0;
+}
+
+@media (max-width: 768px) {
+  .headingWrapper {
+    flex-direction: column;
+    padding: 3rem 0 1rem;
+  }
 }
